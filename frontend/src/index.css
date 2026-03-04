@@ -8,3 +8,20 @@
 	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
 }
+
+.large-font {
+	font-size: 48px;
+}
+@media (min-width: 640px) {
+	.large-font {
+		font-size: 64px;
+	}
+}
+
+.medium-font {
+	font-size: 18px;
+}
+
+.small-font {
+	font-size: 14px;
+}

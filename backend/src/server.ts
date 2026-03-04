@@ -1,7 +1,9 @@
 import { chromium, devices, type Browser } from 'playwright';
 import randomNickname from './helpers/randomNickname.ts';
 
+// Data from the website
 let gamePIN = '5799139';
+let botsNumber = 44;
 
 // Adding one bot to Kahoot
 async function plusBot(browser: Browser) {
@@ -23,7 +25,7 @@ async function addingBots() {
 	const browser = await chromium.launch({ headless: true });
 
 	// Maximum number of participants in the free version of Kahoot (44)
-	for (let i = 0; i < 44; i++) {
+	for (let i = 0; i < botsNumber; i++) {
 		plusBot(browser);
 		await new Promise((resolve) => setTimeout(resolve, 50));
 	}

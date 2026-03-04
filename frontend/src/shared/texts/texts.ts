@@ -7,7 +7,7 @@ const EN_TEXTS = {
 			validatorHint: 'Must be a number'
 		},
 		botsNumber: {
-			label: 'Bot Number',
+			label: 'Bots Number',
 			placeholder: '1-44',
 			validatorHint: 'Must be between 1 to 44'
 		},

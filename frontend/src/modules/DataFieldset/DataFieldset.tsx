@@ -1,6 +1,17 @@
+import { useState } from 'react';
 import getText from '../../shared/texts/texts';
 
 function DataFieldset() {
+	let [gamePin, setGamePin] = useState('');
+	let [botsNumber, setBotsNumber] = useState('');
+
+	let sendData = () => {
+		if (gamePin != '' && botsNumber != '' && Number(botsNumber) >= 1 && Number(botsNumber) <= 44) {
+			console.log('Game PIN: ' + gamePin);
+			console.log('Bots Number: ' + botsNumber);
+		}
+	};
+
 	return (
 		<>
 			<div className="flex justify-center margin-top">
@@ -14,6 +25,8 @@ function DataFieldset() {
 							className="input validator small-font outline-none"
 							required
 							placeholder={getText('fieldset.gamePin.placeholder')}
+							value={gamePin}
+							onChange={(event) => setGamePin(event.target.value)}
 						/>
 						<p className="validator-hint">{getText('fieldset.gamePin.validatorHint')}</p>
 					</div>
@@ -27,11 +40,15 @@ function DataFieldset() {
 							placeholder={getText('fieldset.botsNumber.placeholder')}
 							min="1"
 							max="44"
+							value={botsNumber}
+							onChange={(event) => setBotsNumber(event.target.value.replace(/^0+/, ''))}
 						/>
 						<p className="validator-hint">{getText('fieldset.botsNumber.validatorHint')}</p>
 					</div>
 
-					<button className="btn btn-outline mt-4 small-font">{getText('fieldset.button')}</button>
+					<button className="btn btn-outline mt-4 small-font" onClick={sendData}>
+						{getText('fieldset.button')}
+					</button>
 				</fieldset>
 			</div>
 		</>

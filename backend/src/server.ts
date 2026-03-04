@@ -2,7 +2,7 @@ import { chromium, devices, type Browser } from 'playwright';
 import randomNickname from './helpers/randomNickname.ts';
 
 // Data from the website
-let gamePIN = '5799139';
+let gamePin = '5799139';
 let botsNumber = 44;
 
 // Adding one bot to Kahoot
@@ -13,7 +13,7 @@ async function plusBot(browser: Browser) {
 	const page = await context.newPage();
 	await page.goto('https://kahoot.it/');
 
-	await page.fill('input[name="gameId"]', gamePIN);
+	await page.fill('input[name="gameId"]', gamePin);
 	await page.locator('button[data-functional-selector="join-game-pin"]').click();
 
 	await page.fill('input[name="nickname"]', nickname);

@@ -4,10 +4,14 @@
 	themes: black --default;
 }
 
+/* Font for all elements*/
+
 * {
 	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
 }
+
+/* Font size */
 
 .large-font {
 	font-size: 48px;
@@ -24,4 +28,9 @@
 
 .small-font {
 	font-size: 14px;
+}
+
+/* margin */
+.margin-top {
+	margin-top: clamp(40px, 8vw, 80px);
 }

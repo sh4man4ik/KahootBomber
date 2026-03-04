@@ -1,5 +1,11 @@
+import DataFieldset from '../modules/DataFieldset';
+
 function MainPage() {
-	return <></>;
+	return (
+		<>
+			<DataFieldset></DataFieldset>
+		</>
+	);
 }
 
 export default MainPage;

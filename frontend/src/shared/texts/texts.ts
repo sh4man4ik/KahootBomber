@@ -1,4 +1,7 @@
 const EN_TEXTS = {
+	navbar: {
+		title: 'KahootBomber'
+	},
 	fieldset: {
 		legend: 'Free bots for Kahoot',
 		gamePin: {
@@ -12,6 +15,9 @@ const EN_TEXTS = {
 			validatorHint: 'Must be between 1 to 44'
 		},
 		button: 'SEND BOTS'
+	},
+	footer: {
+		text: `Copyright © ${new Date().getFullYear()} - Made with love ❤️`
 	}
 };
 /* Here you can add other languages */

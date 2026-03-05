@@ -14,7 +14,7 @@ function DataFieldset() {
 
 	return (
 		<>
-			<div className="flex justify-center margin-top">
+			<div className="flex justify-center margin-top" id="dataFieldset">
 				<fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-xs border p-4 mr-[10%] ml-[10%] small-font">
 					<legend className="fieldset-legend">{getText('fieldset.legend')}</legend>
 

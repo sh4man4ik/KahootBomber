@@ -2,6 +2,11 @@ const EN_TEXTS = {
 	navbar: {
 		title: 'KahootBomber'
 	},
+	hero: {
+		title: 'Ready to add some bots to Kahoot?',
+		text: 'Enter the game PIN, choose how many bots you want, and launch them in seconds',
+		button: 'Get Started'
+	},
 	fieldset: {
 		legend: 'Free bots for Kahoot',
 		gamePin: {

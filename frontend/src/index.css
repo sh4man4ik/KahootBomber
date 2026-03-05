@@ -14,11 +14,11 @@
 /* Font size */
 
 .large-font {
-	font-size: 48px;
+	font-size: 28px;
 }
 @media (min-width: 640px) {
 	.large-font {
-		font-size: 64px;
+		font-size: 36px;
 	}
 }
 
@@ -27,7 +27,7 @@
 }
 
 .small-font {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 /* Margin */

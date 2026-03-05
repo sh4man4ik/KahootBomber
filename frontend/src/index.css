@@ -30,8 +30,20 @@
 	font-size: 14px;
 }
 
-/* margin */
+/* Margin */
 
 .margin-top {
 	margin-top: clamp(40px, 8vw, 80px);
+}
+
+/* Remove arrows from input number */
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type='number'] {
+	appearance: textfield;
+	-moz-appearance: textfield;
 }

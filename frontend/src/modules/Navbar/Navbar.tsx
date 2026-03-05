@@ -4,7 +4,7 @@ function Navbar() {
 	return (
 		<>
 			<div className="navbar bg-base-100 border-b border-base-300 flex justify-center">
-				<a className="medium-font">{getText('navbar.title')}</a>
+				<a className="medium-font font-bold">{getText('navbar.title')}</a>
 			</div>
 		</>
 	);

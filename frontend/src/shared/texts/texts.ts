@@ -16,6 +16,20 @@ const EN_TEXTS = {
 		},
 		button: 'SEND BOTS'
 	},
+	FAQ: {
+		firstQuestion: {
+			title: 'Is the website free to use?',
+			text: 'Yes, the website is completely free to use.'
+		},
+		secondQuestion: {
+			title: 'Is it safe to use this website?',
+			text: 'Yes, it is safe. The website does not collect or use your personal data.'
+		},
+		thirdQuestion: {
+			title: 'Why is the bot limit 1–44?',
+			text: 'The limit exists because in the free version of the game only up to 44 players can join a match.'
+		}
+	},
 	footer: {
 		text: `Copyright © ${new Date().getFullYear()} - Made with love ❤️`
 	}

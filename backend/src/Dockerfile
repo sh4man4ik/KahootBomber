@@ -2,11 +2,11 @@ FROM mcr.microsoft.com/playwright:v1.43.0-focal
 
 WORKDIR /app
 
-COPY src/package*.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY src ./
+COPY . ./
 
 RUN npm install -g ts-node typescript
 

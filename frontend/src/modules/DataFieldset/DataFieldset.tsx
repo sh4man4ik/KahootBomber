@@ -1,28 +1,17 @@
 import { useState } from 'react';
+import sendBots from './api/sendBots';
 import getText from '../../shared/texts/texts';
+import getApiLink from './helpers/getApiLink';
 
 function DataFieldset() {
 	let [gamePin, setGamePin] = useState('');
 	let [botsNumber, setBotsNumber] = useState('');
 
-	/*
-	Prod https://.onrender.com
-	Dev http://localhost:5000
-	*/
-	let url = 'http://localhost:5000';
+	let url = getApiLink();
 
 	let sendData = () => {
 		if (gamePin != '' && botsNumber != '' && Number(botsNumber) >= 1 && Number(botsNumber) <= 44) {
-			fetch(`${url}/api/sendBots`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					gamePin: gamePin,
-					botsNumber: botsNumber
-				})
-			});
+			sendBots(url, gamePin, botsNumber);
 		}
 	};
 

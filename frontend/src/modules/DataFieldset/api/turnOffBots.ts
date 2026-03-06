@@ -4,6 +4,8 @@ function turnOffBots(url: any) {
 		headers: {
 			'Content-Type': 'application/json'
 		}
+	}).catch((error) => {
+		console.log(error);
 	});
 }
 

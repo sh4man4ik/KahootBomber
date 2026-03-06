@@ -8,6 +8,8 @@ function sendBots(url: any, gamePin: any, botsNumber: any) {
 			gamePin: gamePin,
 			botsNumber: botsNumber
 		})
+	}).catch((error) => {
+		console.log(error);
 	});
 }
 

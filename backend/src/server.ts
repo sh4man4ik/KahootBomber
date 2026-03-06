@@ -4,6 +4,8 @@ import { chromium, devices, type Browser } from 'playwright';
 import randomNickname from './helpers/randomNickname.ts';
 
 // Setup
+let browser: Browser;
+
 const app = express();
 const port = 5000;
 
@@ -23,6 +25,11 @@ app.post('/api/sendBots', (req, res) => {
 
 	addingBots(gamePin, botsNumber);
 
+	res.end();
+});
+
+app.post('/api/turnOffBots', async (req, res) => {
+	await browser.close();
 	res.end();
 });
 
@@ -47,7 +54,7 @@ async function plusBot(browser: Browser, gamePin: any) {
 
 // Adding the required number of bots to Kahoot
 async function addingBots(gamePin: any, botsNumber: any) {
-	const browser = await chromium.launch({ headless: true });
+	browser = await chromium.launch({ headless: true });
 
 	// Maximum number of participants in the free version of Kahoot (44)
 	for (let i = 0; i < botsNumber; i++) {

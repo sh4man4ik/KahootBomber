@@ -29,7 +29,11 @@ app.post('/api/sendBots', (req, res) => {
 });
 
 app.post('/api/turnOffBots', async (req, res) => {
-	await browser.close();
+	try {
+		await browser.close();
+	} catch (error) {
+		console.log(error);
+	}
 	res.end();
 });
 
@@ -41,15 +45,19 @@ app.listen(port, () => {
 async function plusBot(browser: Browser, gamePin: any) {
 	let nickname = randomNickname();
 
-	const context = await browser.newContext(devices['Galaxy S24']);
-	const page = await context.newPage();
-	await page.goto('https://kahoot.it/');
+	try {
+		const context = await browser.newContext(devices['Galaxy S24']);
+		const page = await context.newPage();
+		await page.goto('https://kahoot.it/');
 
-	await page.fill('input[name="gameId"]', gamePin);
-	await page.locator('button[data-functional-selector="join-game-pin"]').click();
+		await page.fill('input[name="gameId"]', gamePin);
+		await page.locator('button[data-functional-selector="join-game-pin"]').click();
 
-	await page.fill('input[name="nickname"]', nickname);
-	await page.locator('button[data-functional-selector="join-button-username"]').click();
+		await page.fill('input[name="nickname"]', nickname);
+		await page.locator('button[data-functional-selector="join-button-username"]').click();
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 // Adding the required number of bots to Kahoot
@@ -58,11 +66,19 @@ async function addingBots(gamePin: any, botsNumber: any) {
 
 	// Maximum number of participants in the free version of Kahoot (44)
 	for (let i = 0; i < botsNumber; i++) {
-		plusBot(browser, gamePin);
-		await new Promise((resolve) => setTimeout(resolve, 50));
+		try {
+			plusBot(browser, gamePin);
+			await new Promise((resolve) => setTimeout(resolve, 50));
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	// Wait 30 minutes
-	await new Promise((resolve) => setTimeout(resolve, 1800000));
-	await browser.close();
+	try {
+		await new Promise((resolve) => setTimeout(resolve, 1800000));
+		await browser.close();
+	} catch (error) {
+		console.log(error);
+	}
 }

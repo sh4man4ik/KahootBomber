@@ -3,7 +3,11 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"scripts": {},
+	"scripts": {
+		"server": "node ./src/server.ts",
+		"lint": "eslint .",
+		"ts": "tsc --noEmit"
+	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -11,6 +15,8 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.58.2",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
 		"@types/node": "^25.3.3",
 		"@typescript-eslint/eslint-plugin": "^8.56.1",
 		"@typescript-eslint/parser": "^8.56.1",

@@ -1,12 +1,37 @@
+import express from 'express';
+import cors from 'cors';
 import { chromium, devices, type Browser } from 'playwright';
 import randomNickname from './helpers/randomNickname.ts';
 
-// Data from the website
-let gamePin = '5799139';
-let botsNumber = 44;
+// Setup
+const app = express();
+const port = 5000;
+
+app.use(cors());
+app.use(express.json());
+
+// Server
+app.get('/', (req, res) => {
+	res.send('Express launched');
+});
+
+app.post('/api/sendBots', (req, res) => {
+	let data = req.body;
+
+	let gamePin = data.gamePin;
+	let botsNumber = data.botsNumber;
+
+	addingBots(gamePin, botsNumber);
+
+	res.end();
+});
+
+app.listen(port, () => {
+	console.log(`Server is listening on port ${port}`);
+});
 
 // Adding one bot to Kahoot
-async function plusBot(browser: Browser) {
+async function plusBot(browser: Browser, gamePin: any) {
 	let nickname = randomNickname();
 
 	const context = await browser.newContext(devices['Galaxy S24']);
@@ -21,12 +46,12 @@ async function plusBot(browser: Browser) {
 }
 
 // Adding the required number of bots to Kahoot
-async function addingBots() {
+async function addingBots(gamePin: any, botsNumber: any) {
 	const browser = await chromium.launch({ headless: true });
 
 	// Maximum number of participants in the free version of Kahoot (44)
 	for (let i = 0; i < botsNumber; i++) {
-		plusBot(browser);
+		plusBot(browser, gamePin);
 		await new Promise((resolve) => setTimeout(resolve, 50));
 	}
 
@@ -34,4 +59,3 @@ async function addingBots() {
 	await new Promise((resolve) => setTimeout(resolve, 1800000));
 	await browser.close();
 }
-addingBots();

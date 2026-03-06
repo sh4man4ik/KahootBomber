@@ -62,20 +62,16 @@ async function plusBot(browser: Browser, gamePin: any) {
 
 // Adding the required number of bots to Kahoot
 async function addingBots(gamePin: any, botsNumber: any) {
-	browser = await chromium.launch({ headless: true });
+	try {
+		browser = await chromium.launch({ headless: true });
 
-	// Maximum number of participants in the free version of Kahoot (44)
-	for (let i = 0; i < botsNumber; i++) {
-		try {
+		// Maximum number of participants in the free version of Kahoot (44)
+		for (let i = 0; i < botsNumber; i++) {
 			plusBot(browser, gamePin);
 			await new Promise((resolve) => setTimeout(resolve, 50));
-		} catch (error) {
-			console.log(error);
 		}
-	}
 
-	// Wait 30 minutes
-	try {
+		// Wait 30 minutes
 		await new Promise((resolve) => setTimeout(resolve, 1800000));
 		await browser.close();
 	} catch (error) {

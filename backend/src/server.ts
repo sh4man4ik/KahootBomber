@@ -67,8 +67,7 @@ async function addingBots(gamePin: any, botsNumber: any) {
 
 		// Maximum number of participants in the free version of Kahoot (44)
 		for (let i = 0; i < botsNumber; i++) {
-			await plusBot(browser, gamePin);
-			await new Promise((resolve) => setTimeout(resolve, 50));
+			plusBot(browser, gamePin);
 		}
 
 		// Wait 30 minutes

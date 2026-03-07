@@ -48,10 +48,14 @@ function createBot(gamePin: any) {
 		let randomAnswer = Math.floor(Math.random() * 4);
 
 		await new Promise((resolve) => setTimeout(resolve, randomSleepTime));
-		question.answer(randomAnswer);
+		try {
+			question.answer(randomAnswer);
+		} catch (error) {
+			question.answer(0);
+		}
 	});
 
-	client.on('QuizEnd', () => {
+	client.on('Podium', () => {
 		console.log('Bot left!');
 		client.leave();
 	});

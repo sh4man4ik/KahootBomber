@@ -61,6 +61,11 @@ function createBot(gamePin: any) {
 		client.leave();
 	});
 
+	client.on('Error', () => {
+		console.log('Bot left!');
+		client.leave();
+	});
+
 	client.on('Podium', () => {
 		console.log('Bot left!');
 		client.leave();

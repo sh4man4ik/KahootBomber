@@ -12,7 +12,7 @@ The website can be accessed at https://kahoot-bomber.vercel.app
 
 # Source Code
 
-Don't forget to change prod to dev in the _getApiLink.ts_ (frontend/src/modules/DataFieldset/helpers) file.
+Don't forget to change **prod** to **dev** in the _getApiLink.ts_ (frontend/src/modules/DataFieldset/helpers) file.
 
 1. Clone the repository:
 
@@ -54,4 +54,4 @@ npm run server
 
 # Tech stack
 
-The following technologies are used to develop the website: **TypeScript**, **React**, **Tailwind CSS**, **daisyUI**, **Node.js**, **Express**, **playwright**, **Vite** and **Google Fonts**.
+The following technologies are used to develop the website: **TypeScript**, **React**, **Tailwind CSS**, **daisyUI**, **Node.js**, **Express**, **kahoot.js-latest**, **Vite** and **Google Fonts**.

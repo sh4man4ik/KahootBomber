@@ -23,8 +23,8 @@ const EN_TEXTS = {
 	},
 	result: {
 		legend: 'Free bots for Kahoot',
-		text: 'Your bots have been successfully sent! They will stay in the game for 30 minutes, or you can turn them off anytime using the button below.',
-		button: 'Turn Off Bots'
+		text: 'Your bots have been successfully sent! They will answer questions randomly during the game, usually within 5 seconds',
+		button: 'Back'
 	},
 	FAQ: {
 		firstQuestion: {

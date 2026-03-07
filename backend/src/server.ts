@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { chromium, devices, type Browser } from 'playwright';
 import randomNickname from './helpers/randomNickname.ts';
+// @ts-ignore
+import Kahoot from 'kahoot.js-latest';
 
 // Setup
-let browser: Browser;
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -28,51 +27,44 @@ app.post('/api/sendBots', (req, res) => {
 	res.end();
 });
 
-app.post('/api/turnOffBots', async (req, res) => {
-	try {
-		await browser.close();
-	} catch (error) {
-		console.log(error);
-	}
-	res.end();
-});
-
 app.listen(port, () => {
 	console.log(`Server is listening on port ${port}`);
 });
 
 // Adding one bot to Kahoot
-async function plusBot(browser: Browser, gamePin: any) {
+function createBot(gamePin: any) {
+	let client = new Kahoot();
+
 	let nickname = randomNickname();
 
-	try {
-		const context = await browser.newContext(devices['Galaxy S24']);
-		const page = await context.newPage();
-		await page.goto('https://kahoot.it/');
+	client.join(gamePin, nickname);
 
-		await page.fill('input[name="gameId"]', gamePin);
-		await page.locator('button[data-functional-selector="join-game-pin"]').click();
+	client.on('Joined', () => {
+		console.log('Bot joined!');
+	});
 
-		await page.fill('input[name="nickname"]', nickname);
-		await page.locator('button[data-functional-selector="join-button-username"]').click();
-	} catch (error) {
-		console.log(error);
-	}
+	client.on('QuestionStart', async (question: any) => {
+		let randomSleepTime = (Math.floor(Math.random() * 5) + 1) * 1000;
+		let randomAnswer = Math.floor(Math.random() * 4);
+
+		await new Promise((resolve) => setTimeout(resolve, randomSleepTime));
+		question.answer(randomAnswer);
+	});
+
+	client.on('QuizEnd', () => {
+		console.log('Bot left!');
+		client.leave();
+	});
 }
 
 // Adding the required number of bots to Kahoot
 async function addingBots(gamePin: any, botsNumber: any) {
 	try {
-		browser = await chromium.launch({ headless: true });
-
 		// Maximum number of participants in the free version of Kahoot (44)
 		for (let i = 0; i < botsNumber; i++) {
-			plusBot(browser, gamePin);
+			createBot(gamePin);
+			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
-
-		// Wait 30 minutes
-		await new Promise((resolve) => setTimeout(resolve, 1800000));
-		await browser.close();
 	} catch (error) {
 		console.log(error);
 	}

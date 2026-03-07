@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Fieldset from './components/Fieldset';
 import BotsSendResult from './components/BotsSentResult';
 import sendBots from './api/sendBots';
-import turnOffBots from './api/turnOffBots';
 import getApiLink from './helpers/getApiLink';
 
 function DataFieldset() {
@@ -19,8 +18,7 @@ function DataFieldset() {
 		}
 	};
 
-	let stopBots = () => {
-		turnOffBots(url);
+	let returnToFieldset = () => {
 		setIsDataSended(false);
 	};
 
@@ -35,7 +33,7 @@ function DataFieldset() {
 					sendData={sendData}
 				></Fieldset>
 			) : (
-				<BotsSendResult stopBots={stopBots}></BotsSendResult>
+				<BotsSendResult returnToFieldset={returnToFieldset}></BotsSendResult>
 			)}
 		</>
 	);

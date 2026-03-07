@@ -48,11 +48,17 @@ function createBot(gamePin: any) {
 		let randomAnswer = Math.floor(Math.random() * 4);
 
 		await new Promise((resolve) => setTimeout(resolve, randomSleepTime));
+
 		try {
 			question.answer(randomAnswer);
 		} catch (error) {
 			question.answer(0);
 		}
+	});
+
+	client.on('Disconnected', () => {
+		console.log('Bot left!');
+		client.leave();
 	});
 
 	client.on('Podium', () => {

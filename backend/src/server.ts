@@ -56,20 +56,21 @@ function createBot(gamePin: any) {
 		}
 	});
 
-	client.on('Disconnected', () => {
-		console.log('Bot left!');
-		client.leave();
-	});
-
-	client.on('Error', () => {
-		console.log('Bot left!');
-		client.leave();
-	});
-
 	client.on('Podium', () => {
 		console.log('Bot left!');
 		client.leave();
 	});
+
+	client.on('Disconnect', () => {
+		console.log('Bot left!');
+		client.leave();
+	});
+
+	// Wait 30 minutes
+	setTimeout(() => {
+		console.log('Bot left!');
+		client.leave();
+	}, 1800000);
 }
 
 // Adding the required number of bots to Kahoot

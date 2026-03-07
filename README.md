@@ -1,6 +1,6 @@
 # KahootBomber
 
-<video src="https://github.com/user-attachments/assets/06086d17-0221-486e-a157-7e7f6b9ac524" autoplay loop muted></video>
+<video src="https://github.com/user-attachments/assets/06086d17-0221-486e-a157-7e7f6b9ac524"></video>
 
 # What is it?
 

@@ -25,3 +25,4 @@ dist-ssr
 
 # Other
 preview.mp4
+.env

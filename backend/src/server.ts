@@ -25,8 +25,20 @@ app.post('/api/sendBots', (req, res) => {
 	let botsNumber = data.botsNumber;
 	let botsKey = data.botsKey;
 
-	bots.set(botsKey, []);
+	if (!bots.has(botsKey)) {
+		bots.set(botsKey, []);
+	}
 	addingBots(gamePin, botsNumber, botsKey);
+
+	res.end();
+});
+
+app.post('/api/removeBots', (req, res) => {
+	let data = req.body;
+
+	let botsKey = data.botsKey;
+
+	deleteBots(botsKey);
 
 	res.end();
 });
@@ -37,7 +49,6 @@ app.listen(port, () => {
 
 // Adding the required number of bots to Kahoot
 async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
-	console.log(botsKey);
 	try {
 		// Maximum number of participants in the free version of Kahoot (44)
 		for (let i = 0; i < botsNumber; i++) {
@@ -46,8 +57,6 @@ async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
 		}
 	} catch (error) {
 		console.log(error);
-	} finally {
-		console.log(bots);
 	}
 }
 
@@ -77,23 +86,24 @@ function createBot(gamePin: any, botsKey: any) {
 		}
 	});
 
+	// End of game
 	client.on('Podium', () => {
-		client.leave();
-		console.log('Bot left!');
-	});
-
-	client.on('Disconnect', () => {
-		client.leave();
-		console.log('Bot left!');
+		deleteBots(botsKey);
 	});
 
 	// Wait 30 minutes
 	setTimeout(() => {
-		client.leave();
-		console.log('Bot left!');
+		deleteBots(botsKey);
 	}, 1800000);
 }
 
 function deleteBots(botsKey: any) {
+	let botsArray = bots.get(botsKey);
+
+	for (let bot of botsArray) {
+		bot.leave();
+		console.log('Bot left!');
+	}
+
 	bots.delete(botsKey);
 }

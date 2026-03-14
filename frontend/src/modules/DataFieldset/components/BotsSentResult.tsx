@@ -9,8 +9,12 @@ function BotsSendResult(props: any) {
 
 					<p className="small-font">{getText('result.text')}</p>
 
+					<button className="btn btn-outline mt-4 small-font" onClick={props.removeData}>
+						{getText('result.removeBotsButton')}
+					</button>
+
 					<button className="btn btn-outline mt-4 small-font" onClick={props.returnToFieldset}>
-						{getText('result.button')}
+						{getText('result.backButton')}
 					</button>
 				</fieldset>
 			</div>

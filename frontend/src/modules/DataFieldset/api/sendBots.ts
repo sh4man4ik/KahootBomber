@@ -1,4 +1,4 @@
-function sendBots(url: any, gamePin: any, botsNumber: any) {
+function sendBots(url: any, gamePin: any, botsNumber: any, botsKey: any) {
 	fetch(`${url}/api/sendBots`, {
 		method: 'POST',
 		headers: {
@@ -6,7 +6,8 @@ function sendBots(url: any, gamePin: any, botsNumber: any) {
 		},
 		body: JSON.stringify({
 			gamePin: gamePin,
-			botsNumber: botsNumber
+			botsNumber: botsNumber,
+			botsKey: botsKey
 		})
 	}).catch((error) => {
 		console.log(error);

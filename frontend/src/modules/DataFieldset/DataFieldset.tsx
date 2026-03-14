@@ -3,6 +3,7 @@ import Fieldset from './components/Fieldset';
 import BotsSendResult from './components/BotsSentResult';
 import sendBots from './api/sendBots';
 import getApiLink from './helpers/getApiLink';
+import generateBotsKey from './helpers/generateBotsKey';
 
 function DataFieldset() {
 	let [gamePin, setGamePin] = useState('');
@@ -13,7 +14,8 @@ function DataFieldset() {
 
 	let sendData = () => {
 		if (gamePin != '' && botsNumber != '' && Number(botsNumber) >= 1 && Number(botsNumber) <= 44) {
-			sendBots(url, gamePin, botsNumber);
+			let botsKey = generateBotsKey();
+			sendBots(url, gamePin, botsNumber, botsKey);
 			setIsDataSended(true);
 		}
 	};

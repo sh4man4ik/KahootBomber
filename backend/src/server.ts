@@ -11,6 +11,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+let bots = new Map();
+
 // Server
 app.get('/', (req, res) => {
 	res.send('Express launched');
@@ -21,8 +23,10 @@ app.post('/api/sendBots', (req, res) => {
 
 	let gamePin = data.gamePin;
 	let botsNumber = data.botsNumber;
+	let botsKey = data.botsKey;
 
-	addingBots(gamePin, botsNumber);
+	bots.set(botsKey, []);
+	addingBots(gamePin, botsNumber, botsKey);
 
 	res.end();
 });
@@ -31,9 +35,26 @@ app.listen(port, () => {
 	console.log(`Server is listening on port ${port}`);
 });
 
+// Adding the required number of bots to Kahoot
+async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
+	console.log(botsKey);
+	try {
+		// Maximum number of participants in the free version of Kahoot (44)
+		for (let i = 0; i < botsNumber; i++) {
+			createBot(gamePin, botsKey);
+			await new Promise((resolve) => setTimeout(resolve, 50));
+		}
+	} catch (error) {
+		console.log(error);
+	} finally {
+		console.log(bots);
+	}
+}
+
 // Adding one bot to Kahoot
-function createBot(gamePin: any) {
+function createBot(gamePin: any, botsKey: any) {
 	let client = new Kahoot();
+	bots.get(botsKey).push(client);
 
 	let nickname = randomNickname();
 
@@ -57,31 +78,22 @@ function createBot(gamePin: any) {
 	});
 
 	client.on('Podium', () => {
-		console.log('Bot left!');
 		client.leave();
+		console.log('Bot left!');
 	});
 
 	client.on('Disconnect', () => {
-		console.log('Bot left!');
 		client.leave();
+		console.log('Bot left!');
 	});
 
 	// Wait 30 minutes
 	setTimeout(() => {
-		console.log('Bot left!');
 		client.leave();
+		console.log('Bot left!');
 	}, 1800000);
 }
 
-// Adding the required number of bots to Kahoot
-async function addingBots(gamePin: any, botsNumber: any) {
-	try {
-		// Maximum number of participants in the free version of Kahoot (44)
-		for (let i = 0; i < botsNumber; i++) {
-			createBot(gamePin);
-			await new Promise((resolve) => setTimeout(resolve, 100));
-		}
-	} catch (error) {
-		console.log(error);
-	}
+function deleteBots(botsKey: any) {
+	bots.delete(botsKey);
 }

@@ -12,10 +12,6 @@ function BotsSendResult(props: any) {
 					<button className="btn btn-outline mt-4 small-font" onClick={props.removeData}>
 						{getText('result.removeBotsButton')}
 					</button>
-
-					<button className="btn btn-outline mt-4 small-font" onClick={props.returnToFieldset}>
-						{getText('result.backButton')}
-					</button>
 				</fieldset>
 			</div>
 		</>

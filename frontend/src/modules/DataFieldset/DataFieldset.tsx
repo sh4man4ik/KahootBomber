@@ -9,7 +9,7 @@ import generateBotsKey from './helpers/generateBotsKey';
 function DataFieldset() {
 	let [gamePin, setGamePin] = useState('');
 	let [botsNumber, setBotsNumber] = useState('');
-	const [isDataSended, setIsDataSended] = useState(false);
+	let [isDataSended, setIsDataSended] = useState(false);
 	let [botsKey, setBotsKey] = useState(() => {
 		let key = localStorage.getItem('botsKey');
 
@@ -32,11 +32,8 @@ function DataFieldset() {
 	};
 
 	let removeData = () => {
-		removeBots(url, botsKey);
-	};
-
-	let returnToFieldset = () => {
 		setIsDataSended(false);
+		removeBots(url, botsKey);
 	};
 
 	return (
@@ -50,7 +47,7 @@ function DataFieldset() {
 					sendData={sendData}
 				></Fieldset>
 			) : (
-				<BotsSendResult removeData={removeData} returnToFieldset={returnToFieldset}></BotsSendResult>
+				<BotsSendResult removeData={removeData}></BotsSendResult>
 			)}
 		</>
 	);

@@ -100,10 +100,12 @@ function createBot(gamePin: any, botsKey: any) {
 function deleteBots(botsKey: any) {
 	let botsArray = bots.get(botsKey);
 
-	for (let bot of botsArray) {
-		bot.leave();
-		console.log('Bot left!');
-	}
+	if (botsArray) {
+		for (let bot of botsArray) {
+			bot.leave();
+			console.log('Bot left!');
+		}
 
-	bots.delete(botsKey);
+		bots.delete(botsKey);
+	}
 }

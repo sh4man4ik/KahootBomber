@@ -24,8 +24,7 @@ const EN_TEXTS = {
 	result: {
 		legend: 'Free bots for Kahoot',
 		text: 'Your bots have been successfully sent! They will answer questions randomly during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.',
-		removeBotsButton: 'Remove bots',
-		backButton: 'Back'
+		removeBotsButton: 'Remove bots'
 	},
 	FAQ: {
 		firstQuestion: {

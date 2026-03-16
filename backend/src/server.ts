@@ -61,13 +61,13 @@ async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
 }
 
 // Adding one bot to Kahoot
-function createBot(gamePin: any, botsKey: any) {
+async function createBot(gamePin: any, botsKey: any) {
 	let client = new Kahoot();
 	bots.get(botsKey).push(client);
 
 	let nickname = randomNickname();
 
-	client.join(gamePin, nickname);
+	await client.join(gamePin, nickname);
 
 	client.on('Joined', () => {
 		console.log('Bot joined!');

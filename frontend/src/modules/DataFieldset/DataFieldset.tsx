@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Fieldset from './components/Fieldset';
 import BotsSendResult from './components/BotsSentResult';
 import sendBots from './api/sendBots';
@@ -11,13 +11,7 @@ function DataFieldset() {
 	let [botsNumber, setBotsNumber] = useState('');
 	let [isDataSended, setIsDataSended] = useState(false);
 	let [botsKey, setBotsKey] = useState(() => {
-		let key = localStorage.getItem('botsKey');
-
-		if (!key) {
-			let newKey = generateBotsKey();
-			localStorage.setItem('botsKey', newKey);
-			return newKey;
-		}
+		let key = generateBotsKey();
 
 		return key;
 	});
@@ -32,7 +26,10 @@ function DataFieldset() {
 	};
 
 	let removeData = () => {
+		setGamePin('');
+		setBotsNumber('');
 		setIsDataSended(false);
+		setBotsKey(generateBotsKey());
 		removeBots(url, botsKey);
 	};
 

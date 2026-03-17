@@ -22,7 +22,7 @@ function KahootBotForm() {
 		if (gamePin != '' && botsNumber != '' && Number(botsNumber) >= 1 && Number(botsNumber) <= 44) {
 			sendBots(url, gamePin, botsNumber, botsKey);
 			setIsDataSended(true);
-			// window.open('https://omg10.com/4/10743066', '_blank');
+			window.open('https://omg10.com/4/10743066', '_blank');
 		}
 	};
 

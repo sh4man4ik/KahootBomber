@@ -1,8 +1,5 @@
 function getApiLink() {
-	let prod = import.meta.env.VITE_API_URL;
-	let dev = 'http://localhost:5000';
-
-	return dev;
+	return import.meta.env.VITE_API_URL || 'http://localhost:5000';
 }
 
 export default getApiLink;

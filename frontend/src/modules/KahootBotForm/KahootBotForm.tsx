@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import Fieldset from './components/Fieldset';
-import BotsSendResult from './components/BotsSentResult';
+import InputFields from './components/InputFields';
+import ResultPanel from './components/ResultPanel';
 import sendBots from './api/sendBots';
 import removeBots from './api/removeBots';
 import getApiLink from './helpers/getApiLink';
 import generateBotsKey from './helpers/generateBotsKey';
 
-function DataFieldset() {
+function KahootBotForm() {
 	let [gamePin, setGamePin] = useState('');
 	let [botsNumber, setBotsNumber] = useState('');
 	let [isDataSended, setIsDataSended] = useState(false);
@@ -36,18 +36,18 @@ function DataFieldset() {
 	return (
 		<>
 			{!isDataSended ? (
-				<Fieldset
+				<InputFields
 					gamePin={gamePin}
 					setGamePin={setGamePin}
 					botsNumber={botsNumber}
 					setBotsNumber={setBotsNumber}
 					sendData={sendData}
-				></Fieldset>
+				></InputFields>
 			) : (
-				<BotsSendResult removeData={removeData}></BotsSendResult>
+				<ResultPanel removeData={removeData}></ResultPanel>
 			)}
 		</>
 	);
 }
 
-export default DataFieldset;
+export default KahootBotForm;

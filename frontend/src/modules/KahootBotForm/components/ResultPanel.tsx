@@ -1,6 +1,6 @@
 import getText from '../../../shared/texts/texts';
 
-function BotsSendResult(props: any) {
+function ResultPanel(props: any) {
 	return (
 		<>
 			<div className="flex justify-center margin-top">
@@ -18,4 +18,4 @@ function BotsSendResult(props: any) {
 	);
 }
 
-export default BotsSendResult;
+export default ResultPanel;

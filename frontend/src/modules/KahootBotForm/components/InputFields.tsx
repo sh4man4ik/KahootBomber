@@ -1,6 +1,6 @@
 import getText from '../../../shared/texts/texts';
 
-function Fieldset(props: any) {
+function InputFields(props: any) {
 	return (
 		<>
 			<div className="flex justify-center margin-top" id="dataFieldset">
@@ -44,4 +44,4 @@ function Fieldset(props: any) {
 	);
 }
 
-export default Fieldset;
+export default InputFields;

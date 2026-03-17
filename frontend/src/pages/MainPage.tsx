@@ -1,6 +1,6 @@
 import Navbar from '../modules/Navbar';
 import Hero from '../modules/Hero';
-import DataFieldset from '../modules/DataFieldset';
+import KahootBotForm from '../modules/KahootBotForm';
 import FAQ from '../modules/FAQ';
 import Footer from '../modules/Footer';
 
@@ -9,7 +9,7 @@ function MainPage() {
 		<>
 			<Navbar></Navbar>
 			<Hero></Hero>
-			<DataFieldset></DataFieldset>
+			<KahootBotForm></KahootBotForm>
 			<FAQ></FAQ>
 			<Footer></Footer>
 		</>

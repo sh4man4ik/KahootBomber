@@ -179,15 +179,15 @@ function randomWord() {
 	return String(nameList[Math.floor(Math.random() * nameList.length)]);
 }
 
-function randomNickname() {
+function getRandomNickname() {
 	let nickname = randomWord() + randomWord();
 
 	// The maximum length of a nickname in Kahoot is 15 characters
 	if (nickname.length > 15) {
-		randomNickname();
+		getRandomNickname();
 	}
 
 	return nickname;
 }
 
-export default randomNickname;
+export default getRandomNickname;

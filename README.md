@@ -4,15 +4,13 @@
 
 # What is it?
 
-This is a website for spam bots in Kahoot.
+This is a website for spam bots in Kahoot. You can add between 1 and 44 bots using the website. They will answer questions randomly during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.
 
 # Quick Start
 
 The website can be accessed at https://kahoot-bomber.vercel.app
 
 # Source Code
-
-Don't forget to change **prod** to **dev** in the _getApiLink.ts_ (frontend/src/modules/DataFieldset/helpers) file.
 
 1. Clone the repository:
 
@@ -59,4 +57,5 @@ The following technologies are used to develop the website: **TypeScript**, **Re
 # Facts about the website
 
 - Google Analytics is used to view stats
+- There is no annoying advertising on the website
 - The website is responsive

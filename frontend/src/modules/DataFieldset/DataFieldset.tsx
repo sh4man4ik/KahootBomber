@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Fieldset from './components/Fieldset';
 import BotsSendResult from './components/BotsSentResult';
 import sendBots from './api/sendBots';

@@ -79,9 +79,10 @@ async function createBot(gamePin: any, botsKey: any) {
 	});
 
 	client.on('QuestionStart', async (question: any) => {
-		let randomSleepTime = Math.round(Math.random() * 4500 + 500);
-		let randomAnswer = Math.floor(Math.random() * 4);
+		let numberOfChoices = question.numberOfChoices;
+		let randomAnswer = Math.floor(Math.random() * numberOfChoices);
 
+		let randomSleepTime = Math.round(Math.random() * 4500 + 500);
 		await new Promise((resolve) => setTimeout(resolve, randomSleepTime));
 
 		try {

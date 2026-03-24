@@ -57,5 +57,5 @@ The following technologies are used to develop the website: **TypeScript**, **Re
 # Facts about the website
 
 - Google Analytics is used to view stats
-- There is no annoying advertising on the website
+- There are no ads on the website
 - The website is responsive

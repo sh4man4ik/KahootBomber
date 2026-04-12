@@ -1,10 +1,11 @@
 import getText from '../../shared/texts/texts';
-import { RiHandHeartFill, RiTelegram2Fill, RiDiscordFill } from '@remixicon/react';
+import { RiHandHeartFill, RiTelegram2Fill, RiDiscordFill, RiGithubFill } from '@remixicon/react';
 
 function Footer() {
 	const donateUrl = 'https://www.paypal.com/donate/?hosted_button_id=L5HQUVC3Q68T4';
 	const telegramUrl = 'https://t.me/sh4man4ikk';
 	const discordUrl = 'https://discord.com/users/1263492247681237012';
+	const githubUrl = 'https://github.com/sh4man4ik/KahootBomber';
 
 	return (
 		<>
@@ -22,6 +23,9 @@ function Footer() {
 						</a>
 						<a className="cursor-pointer" href={discordUrl} target="_blank">
 							<RiDiscordFill size={32} />
+						</a>
+						<a className="cursor-pointer" href={githubUrl} target="_blank">
+							<RiGithubFill size={32} />
 						</a>
 					</div>
 				</nav>

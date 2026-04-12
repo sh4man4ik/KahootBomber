@@ -1,14 +1,30 @@
 import getText from '../../shared/texts/texts';
-import DonateButton from './components/DonateButton';
+import { RiHandHeartFill, RiTelegram2Fill, RiDiscordFill } from '@remixicon/react';
 
 function Footer() {
+	const donateUrl = 'https://www.paypal.com/donate/?hosted_button_id=L5HQUVC3Q68T4';
+	const telegramUrl = 'https://t.me/sh4man4ikk';
+	const discordUrl = 'https://discord.com/users/1263492247681237012';
+
 	return (
 		<>
-			<footer className="border-t border-base-300 margin-top footer sm:footer-horizontal footer-center main-content-color p-4 small-font">
+			<footer className="border-t border-base-300 margin-top footer footer-horizontal footer-center p-[20px] gap-5">
 				<aside>
 					<p>{getText('footer.text')}</p>
-					<DonateButton></DonateButton>
 				</aside>
+				<nav>
+					<div className="grid grid-flow-col gap-5">
+						<a className="cursor-pointer" href={donateUrl} target="_blank">
+							<RiHandHeartFill size={32} />
+						</a>
+						<a className="cursor-pointer" href={telegramUrl} target="_blank">
+							<RiTelegram2Fill size={32} />
+						</a>
+						<a className="cursor-pointer" href={discordUrl} target="_blank">
+							<RiDiscordFill size={32} />
+						</a>
+					</div>
+				</nav>
 			</footer>
 		</>
 	);

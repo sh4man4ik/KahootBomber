@@ -1,4 +1,4 @@
-import addingBots from '../kahoot/addingBots.ts';
+import addAllBots from '../kahoot/addAllBots.ts';
 import { bots } from '../serverSetup.ts';
 
 let sendBots = (req: any, res: any) => {
@@ -11,7 +11,7 @@ let sendBots = (req: any, res: any) => {
 	if (!bots.has(botsKey)) {
 		bots.set(botsKey, []);
 	}
-	addingBots(gamePin, botsNumber, botsKey);
+	addAllBots(gamePin, botsNumber, botsKey);
 
 	res.end();
 };

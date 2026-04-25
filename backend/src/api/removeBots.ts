@@ -1,10 +1,10 @@
-import deleteBots from '../kahoot/deleteBots.ts';
+import removeAllBots from '../kahoot/removeAllBots.ts';
 
 let removeBots = (req: any, res: any) => {
 	let data = req.body;
 	let botsKey = data.botsKey;
 
-	deleteBots(botsKey);
+	removeAllBots(botsKey);
 
 	res.end();
 };

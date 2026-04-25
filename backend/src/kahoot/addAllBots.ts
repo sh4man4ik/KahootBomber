@@ -1,6 +1,6 @@
 import createBot from './createBot.ts';
 
-async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
+async function addAllBots(gamePin: any, botsNumber: any, botsKey: any) {
 	try {
 		for (let i = 0; i < botsNumber; i++) {
 			createBot(gamePin, botsKey);
@@ -11,4 +11,4 @@ async function addingBots(gamePin: any, botsNumber: any, botsKey: any) {
 	}
 }
 
-export default addingBots;
+export default addAllBots;

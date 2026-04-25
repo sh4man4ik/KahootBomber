@@ -1,6 +1,6 @@
 // @ts-ignore
 import Kahoot from 'kahoot.js-latest';
-import deleteBots from './deleteBots.ts';
+import removeAllBots from './removeAllBots.ts';
 import getRandomAnswer from '../helpers/getRandomAnswer.ts';
 import getRandomNickname from '../helpers/getRandomNickname.ts';
 import { bots } from '../serverSetup.ts';
@@ -33,12 +33,12 @@ async function createBot(gamePin: any, botsKey: any) {
 
 	// End of game
 	client.on('Podium', () => {
-		deleteBots(botsKey);
+		removeAllBots(botsKey);
 	});
 
 	// Wait 30 minutes
 	setTimeout(() => {
-		deleteBots(botsKey);
+		removeAllBots(botsKey);
 	}, 1800000);
 }
 

@@ -1,6 +1,6 @@
 import { bots } from '../serverSetup.ts';
 
-function deleteBots(botsKey: any) {
+function removeAllBots(botsKey: any) {
 	let botsArray = bots.get(botsKey);
 
 	if (botsArray) {
@@ -13,4 +13,4 @@ function deleteBots(botsKey: any) {
 	}
 }
 
-export default deleteBots;
+export default removeAllBots;

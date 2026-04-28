@@ -40,7 +40,7 @@ function InputFields(props: any) {
 						<div className="flex">
 							<label className="label pb-[5px]">{getText('fieldset.answerTypes.label')}</label>
 
-							<div className="tooltip pl-[5px] pt-[1px] w-[50px]" data-tip={getText('fieldset.tooltip')}>
+							<div className="tooltip pl-[5px] pt-[1px]" data-tip={getText('fieldset.tooltip')}>
 								<RiInformationLine size={16} />
 							</div>
 						</div>

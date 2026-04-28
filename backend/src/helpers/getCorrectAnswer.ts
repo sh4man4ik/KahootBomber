@@ -1,3 +1,5 @@
+import getRandomAnswer from './getRandomAnswer.ts';
+
 async function getCorrectAnswer(uuid: any, question: any) {
 	const url = 'https://kahoot.it/rest/kahoots/' + uuid;
 	let questionNumber = question.gameBlockIndex;
@@ -15,7 +17,8 @@ async function getCorrectAnswer(uuid: any, question: any) {
 
 			correctAnswer = correctAnswers[questionNumber];
 		} else {
-			console.log(response.status);
+			correctAnswer = await getRandomAnswer(question);
+			console.log('Error status (2): ' + response.status);
 		}
 	} catch (error) {
 		console.log(error);

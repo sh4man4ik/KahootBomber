@@ -34,7 +34,7 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 				const result = await response.json();
 				currentQuizUUID = result.entities[0].card.uuid;
 			} else {
-				console.log(response.status);
+				console.log('Error status (1): ' + response.status);
 			}
 		} catch (error) {
 			console.log(error);
@@ -42,9 +42,9 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 	});
 
 	client.on('QuestionStart', async (question: any) => {
-		let answer;
-
 		try {
+			let answer;
+
 			if (answerTypes == 'random') {
 				answer = await getRandomAnswer(question);
 			} else {
@@ -53,6 +53,8 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 
 			question.answer(answer);
 		} catch (error) {
+			console.log(error);
+
 			question.answer(0);
 		}
 	});

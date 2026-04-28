@@ -184,7 +184,7 @@ function getRandomNickname() {
 
 	// The maximum length of a nickname in Kahoot is 15 characters
 	if (nickname.length > 15) {
-		getRandomNickname();
+		return getRandomNickname();
 	}
 
 	return nickname;

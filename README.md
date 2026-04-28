@@ -4,7 +4,7 @@
 
 # What is it?
 
-This is a website for spam bots in Kahoot. You can add between 1 and 44 bots using the website. They will answer questions randomly during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.
+This is a website for spam bots in Kahoot. You can add between 1 and 44 bots using the website. They will answer questions randomly or correctly during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.
 
 # Quick Start
 

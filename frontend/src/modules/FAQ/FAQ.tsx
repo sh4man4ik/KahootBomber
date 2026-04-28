@@ -21,6 +21,13 @@ function FAQ() {
 					<div className="collapse-title font-semibold medium-font">{getText('FAQ.thirdQuestion.title')}</div>
 					<div className="collapse-content small-font">{getText('FAQ.thirdQuestion.text')}</div>
 				</div>
+				<div className="collapse collapse-arrow bg-base-100 border border-base-300">
+					<input type="radio" name="my-accordion-2" />
+					<div className="collapse-title font-semibold medium-font">
+						{getText('FAQ.fourthQuestion.title')}
+					</div>
+					<div className="collapse-content small-font">{getText('FAQ.fourthQuestion.text')}</div>
+				</div>
 			</div>
 		</>
 	);

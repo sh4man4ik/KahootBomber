@@ -32,7 +32,7 @@ const EN_TEXTS = {
 	},
 	result: {
 		legend: 'Free bots for Kahoot',
-		text: 'Your bots have been successfully sent! They will answer questions randomly during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.',
+		text: 'Your bots have been successfully sent! They will answer questions during the game, usually within 5 seconds. Bots will automatically leave the game when it ends, after 30 minutes or when you click the button below.',
 		removeBotsButton: 'Remove bots'
 	},
 	FAQ: {
@@ -47,6 +47,10 @@ const EN_TEXTS = {
 		thirdQuestion: {
 			title: 'Why is the bot limit 1–44?',
 			text: 'The limit exists because in the free version of the game only up to 44 players can join a match.'
+		},
+		fourthQuestion: {
+			title: 'Why might correct answers in a quiz not work properly?',
+			text: 'Because Kahoot strictly limits how you can get correct answers from the code, it might end up finding answers for the wrong quiz.'
 		}
 	},
 	footer: {

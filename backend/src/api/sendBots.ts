@@ -6,12 +6,13 @@ let sendBots = (req: any, res: any) => {
 
 	let gamePin = data.gamePin;
 	let botsNumber = data.botsNumber;
+	let answerTypes = data.answerTypes;
 	let botsKey = data.botsKey;
 
 	if (!bots.has(botsKey)) {
 		bots.set(botsKey, []);
 	}
-	addAllBots(gamePin, botsNumber, botsKey);
+	addAllBots(gamePin, botsNumber, answerTypes, botsKey);
 
 	res.end();
 };

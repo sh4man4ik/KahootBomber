@@ -1,9 +1,9 @@
 import createBot from './createBot.ts';
 
-async function addAllBots(gamePin: any, botsNumber: any, botsKey: any) {
+async function addAllBots(gamePin: any, botsNumber: any, answerTypes: any, botsKey: any) {
 	try {
 		for (let i = 0; i < botsNumber; i++) {
-			createBot(gamePin, botsKey);
+			createBot(gamePin, answerTypes, botsKey);
 			await new Promise((resolve) => setTimeout(resolve, 50));
 		}
 	} catch (error) {

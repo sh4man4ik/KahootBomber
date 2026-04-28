@@ -35,6 +35,21 @@ function InputFields(props: any) {
 						<p className="validator-hint">{getText('fieldset.botsNumber.validatorHint')}</p>
 					</div>
 
+					<div>
+						<label className="label pb-[2px]">{getText('fieldset.answerTypes.label')}</label>
+						<select
+							defaultValue=""
+							onChange={(event) => props.setAnswerTypes(event.target.value)}
+							className="select validator small-font outline-none"
+						>
+							<option value={''} disabled={true}>
+								{getText('fieldset.answerTypes.options.pick')}
+							</option>
+							<option value={'random'}>{getText('fieldset.answerTypes.options.random')}</option>
+							<option value={'correct'}>{getText('fieldset.answerTypes.options.correct')}</option>
+						</select>
+					</div>
+
 					<button className="btn btn-outline mt-4 small-font" onClick={props.sendData}>
 						{getText('fieldset.button')}
 					</button>

@@ -2,12 +2,14 @@
 import Kahoot from 'kahoot.js-latest';
 import removeAllBots from './removeAllBots.ts';
 import getRandomAnswer from '../helpers/getRandomAnswer.ts';
+import getCorrectAnswer from '../helpers/getCorrectAnswer.ts';
 import getRandomNickname from '../helpers/getRandomNickname.ts';
 import { bots } from '../serverSetup.ts';
 
-async function createBot(gamePin: any, botsKey: any) {
+async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 	let client = new Kahoot();
 	let nickname = getRandomNickname();
+	let currentQuizUUID: any;
 
 	try {
 		await client.join(gamePin, nickname);
@@ -21,11 +23,35 @@ async function createBot(gamePin: any, botsKey: any) {
 		return;
 	}
 
-	client.on('QuestionStart', async (question: any) => {
-		let randomAnswer = await getRandomAnswer(question);
+	client.on('QuizStart', async (quiz: any) => {
+		let query = quiz.firstGameBlockData.question;
+		const url = 'https://create.kahoot.it/rest/kahoots/?query=' + query + '&limit=1';
 
 		try {
-			question.answer(randomAnswer);
+			const response = await fetch(url);
+
+			if (response.ok) {
+				const result = await response.json();
+				currentQuizUUID = result.entities[0].card.uuid;
+			} else {
+				console.log(response.status);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	});
+
+	client.on('QuestionStart', async (question: any) => {
+		let answer;
+
+		try {
+			if (answerTypes == 'random') {
+				answer = await getRandomAnswer(question);
+			} else {
+				answer = await getCorrectAnswer(currentQuizUUID, question);
+			}
+
+			question.answer(answer);
 		} catch (error) {
 			question.answer(0);
 		}

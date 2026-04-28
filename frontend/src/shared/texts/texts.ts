@@ -19,6 +19,14 @@ const EN_TEXTS = {
 			placeholder: '1-44',
 			validatorHint: 'Must be between 1 to 44'
 		},
+		answerTypes: {
+			label: 'Answer types',
+			options: {
+				pick: 'Pick a type',
+				random: 'Only random',
+				correct: 'Only correct'
+			}
+		},
 		button: 'SEND BOTS'
 	},
 	result: {

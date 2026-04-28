@@ -1,3 +1,4 @@
+import { RiInformationLine } from '@remixicon/react';
 import getText from '../../../shared/texts/texts';
 
 function InputFields(props: any) {
@@ -8,7 +9,7 @@ function InputFields(props: any) {
 					<legend className="fieldset-legend">{getText('fieldset.legend')}</legend>
 
 					<div>
-						<label className="label pb-[2px]">{getText('fieldset.gamePin.label')}</label>
+						<label className="label pb-[5px]">{getText('fieldset.gamePin.label')}</label>
 						<input
 							type="number"
 							className="input validator small-font outline-none"
@@ -21,7 +22,7 @@ function InputFields(props: any) {
 					</div>
 
 					<div>
-						<label className="label pb-[2px]">{getText('fieldset.botsNumber.label')}</label>
+						<label className="label pb-[5px]">{getText('fieldset.botsNumber.label')}</label>
 						<input
 							type="number"
 							className="input validator small-font outline-none"
@@ -36,7 +37,13 @@ function InputFields(props: any) {
 					</div>
 
 					<div>
-						<label className="label pb-[2px]">{getText('fieldset.answerTypes.label')}</label>
+						<div className="flex">
+							<label className="label pb-[5px]">{getText('fieldset.answerTypes.label')}</label>
+
+							<div className="tooltip pl-[5px] pt-[1px] w-[50px]" data-tip={getText('fieldset.tooltip')}>
+								<RiInformationLine size={16} />
+							</div>
+						</div>
 						<select
 							defaultValue=""
 							onChange={(event) => props.setAnswerTypes(event.target.value)}

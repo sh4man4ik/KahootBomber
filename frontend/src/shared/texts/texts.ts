@@ -27,7 +27,7 @@ const EN_TEXTS = {
 				correct: 'Only correct'
 			}
 		},
-		tooltip: `Kahoot's limitations often make it hard to find the correct answers to quizzes`,
+		tooltip: "There's an issue with Kahoot, the right answers might be broken",
 		button: 'SEND BOTS'
 	},
 	result: {

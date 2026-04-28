@@ -4,9 +4,13 @@ function removeAllBots(botsKey: any) {
 	let botsArray = bots.get(botsKey);
 
 	if (botsArray) {
-		for (let bot of botsArray) {
-			bot.leave();
-			console.log('Bot left!');
+		try {
+			for (let bot of botsArray) {
+				bot.leave();
+				console.log('Bot left!');
+			}
+		} catch (error) {
+			console.log(error);
 		}
 
 		bots.delete(botsKey);

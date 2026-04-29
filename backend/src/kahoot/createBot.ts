@@ -42,20 +42,26 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 	});
 
 	client.on('QuestionStart', async (question: any) => {
+		let randomAnswer;
+		let correctAnswer;
+
 		try {
-			let answer;
+			randomAnswer = await getRandomAnswer(question);
+			correctAnswer = await getCorrectAnswer(currentQuizUUID, question);
 
 			if (answerTypes == 'random') {
-				answer = await getRandomAnswer(question);
+				question.answer(randomAnswer);
 			} else {
-				answer = await getCorrectAnswer(currentQuizUUID, question);
+				if (correctAnswer != undefined && correctAnswer != null) {
+					question.answer(correctAnswer);
+				} else {
+					question.answer(randomAnswer);
+				}
 			}
-
-			question.answer(answer);
 		} catch (error) {
 			console.log(error);
 
-			question.answer(0);
+			question.answer(randomAnswer);
 		}
 	});
 

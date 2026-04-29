@@ -12,7 +12,7 @@ async function getCorrectAnswer(uuid: any, question: any) {
 			const result = await response.json();
 
 			const correctAnswers = result.questions.map((question: any) => {
-				return question.choices.findIndex((choice: any) => choice.correct == true);
+				return question?.choices?.findIndex((choice: any) => choice.correct == true);
 			});
 
 			correctAnswer = correctAnswers[questionNumber];

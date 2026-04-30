@@ -24,7 +24,12 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 	}
 
 	client.on('QuizStart', async (quiz: any) => {
-		let query = quiz.firstGameBlockData.question;
+		let query = quiz?.firstGameBlockData?.question;
+
+		if (query == undefined || query == null) {
+			query = '';
+		}
+
 		const url = 'https://create.kahoot.it/rest/kahoots/?query=' + query + '&limit=1';
 
 		try {
@@ -42,26 +47,25 @@ async function createBot(gamePin: any, answerTypes: any, botsKey: any) {
 	});
 
 	client.on('QuestionStart', async (question: any) => {
-		let randomAnswer;
-		let correctAnswer;
+		let answer;
 
 		try {
-			randomAnswer = await getRandomAnswer(question);
-			correctAnswer = await getCorrectAnswer(currentQuizUUID, question);
-
 			if (answerTypes == 'random') {
-				question.answer(randomAnswer);
+				answer = await getRandomAnswer(question);
 			} else {
-				if (correctAnswer != undefined && correctAnswer != null) {
-					question.answer(correctAnswer);
-				} else {
-					question.answer(randomAnswer);
+				answer = await getCorrectAnswer(currentQuizUUID, question);
+
+				if (answer == undefined && answer == null) {
+					answer = await getRandomAnswer(question);
 				}
 			}
+
+			question.answer(answer);
 		} catch (error) {
 			console.log(error);
 
-			question.answer(randomAnswer);
+			let answer = await getRandomAnswer(question);
+			question.answer(answer);
 		}
 	});
 
